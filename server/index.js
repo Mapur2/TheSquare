@@ -6,7 +6,7 @@ import createGameState from './game.js'; // your game factory function
 
 const app = express();
 app.use(cors({
-    origin: "https://the-sqaure.vercel.app",
+    origin: "https://the-square-omega.vercel.app/",
     methods: ["*"],
 }));
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "https://the-sqaure.vercel.app",
+        origin: "https://the-square-omega.vercel.app/",
         methods: ["*"],
     },
 });
