@@ -256,7 +256,7 @@ function processPlayerAction(data, socket, roomId) {
             result = searchRoom(data.playerType, gameState);
             // Send search results only to the requesting client.
             socket.emit(ACTIONS.SEARCH_RESULT, result);
-            break;
+            return
         case 'map':
             socket.emit(ACTIONS.GAME_UPDATE, gameState);
             // Do not advance turn on map.
