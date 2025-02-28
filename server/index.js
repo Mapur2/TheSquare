@@ -88,7 +88,7 @@ function checkCollisions(gameState) {
     if (humanPos.x === rookPos.x && humanPos.y === rookPos.y) {
         if (humanInv.includes('screwdriver')) {
             gameState.players.rook.disabled = true;
-            message="Human has screwdriver and disabled rook"
+            message = "Human has screwdriver and disabled rook"
         }
         // Note: Rook collision does not cause game over.
     }
@@ -160,11 +160,10 @@ io.on('connection', (socket) => {
             });
         });
 
-        if (room.players.length ===3) {
-            io.to(roomId).emit(ACTIONS.GAME_START, room.gameState);
-            setTimeout(()=>{
-                socket.emit("bishopUpdate",room.gameState)
-            },1500)
+        if (room.players.length === 3) {
+            setTimeout(() => {
+                io.to(roomId).emit(ACTIONS.GAME_START, room.gameState);
+            }, 3000)
         }
     });
     // --- PLAYER ACTIONS HANDLER ---
@@ -277,27 +276,26 @@ function processPlayerAction(data, socket, roomId) {
         });
         return;
     }
-    const human=gameState.players.human.position
-    if(human.x==4 && human.y==4){
+    const human = gameState.players.human.position
+    if (human.x == 4 && human.y == 4) {
         delete rooms[roomId]
-        io.to(roomId).emit(ACTIONS.GAME_OVER,{
-            message:"Human has won as he reached the 4,4 corner.",
+        io.to(roomId).emit(ACTIONS.GAME_OVER, {
+            message: "Human has won as he reached the 4,4 corner.",
             gameState
         })
         return;
     }
 
     advanceTurn(gameState);
-    if(gameState.currentTurn=="rook" && gameState.players.rook.disabled)
+    if (gameState.currentTurn == "rook" && gameState.players.rook.disabled)
         advanceTurn(gameState);
-    if(gameState.players.bishop.disabled)
-    {
+    if (gameState.players.bishop.disabled) {
         advanceTurn(gameState);
     }
-    if(gameState.currentTurn=="bishop" && gameState.players.bishop.disabled && gameState.players.bishop.disabled){
+    if (gameState.currentTurn == "bishop" && gameState.players.bishop.disabled && gameState.players.bishop.disabled) {
         delete rooms[roomId]
-        io.to(roomId).emit(ACTIONS.GAME_OVER,{
-            message:"Both rook and bishop is disabled. Human has won the game!",
+        io.to(roomId).emit(ACTIONS.GAME_OVER, {
+            message: "Both rook and bishop is disabled. Human has won the game!",
             gameState
         })
         return;
@@ -345,7 +343,7 @@ function getAdjacentRoomDetails(playerType, gameState) {
         players: Object.entries(gameState.players)
             .filter(([role, player]) => player.position.x === pos.x && player.position.y === pos.y)
             .map(([role]) => ({ role })),
-        humanItems:gameState.players.human.inventory
+        humanItems: gameState.players.human.inventory
     };
     return details;
 }

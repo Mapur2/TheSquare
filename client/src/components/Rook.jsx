@@ -48,11 +48,11 @@ const RookGamePage = () => {
       setTurn(state.currentTurn);
       setCurrentRoom(state.players.rook.position || { x: 0, y: 0 });
       
-      if(gameState.currentTurn==1)
+      if(state.currentTurn==1)
         toast.success("Your Turn")
-      if (gameState.players.bishop.disabled)
+      if (state.players.bishop.disabled)
         toast.error("Bishop is now disabled")
-      if (gameState.players.rook.disabled)
+      if (state.players.rook.disabled)
         toast.error("Rook is now disabled")
     });
 
