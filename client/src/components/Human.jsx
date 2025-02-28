@@ -41,7 +41,7 @@ const HumanGamePage = () => {
 
     socket.on(ACTIONS.GAME_UPDATE, (state) => {
       setGameState(state);
-      if(gameState.turn==0  )
+      if(gameState.currentTurn==0  )
         toast.success("Your Turn")
       if(gameState.players.bishop.disabled)
         toast.error("Rook is now disabled")
@@ -352,14 +352,14 @@ const HumanGamePage = () => {
                       gameState.players.human.position.y === actualY && (
                         <span className="text-blue-500 text-lg font-bold">You</span>
                       )}
-                    {/* {gameState.players.rook.position.x === x &&
+                    {gameState.players.rook.position.x === x &&
                       gameState.players.rook.position.y === actualY && (
                         <span className="text-yellow-500 text-lg fond-bold">Rook</span>
                       )}
                     {gameState.players.bishop.position.x === x &&
                       gameState.players.bishop.position.y === actualY && (
                         <span className="text-red-500 text-lg fond-bold">Bishop</span>
-                      )} */}
+                      )}
                   </div>
                 </div>
               </div>

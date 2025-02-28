@@ -48,7 +48,7 @@ const RookGamePage = () => {
       setTurn(state.currentTurn);
       setCurrentRoom(state.players.rook.position || { x: 0, y: 0 });
       
-      if(gameState.turn==1)
+      if(gameState.currentTurn==1)
         toast.success("Your Turn")
       if (gameState.players.bishop.disabled)
         toast.error("Bishop is now disabled")
@@ -99,13 +99,14 @@ const RookGamePage = () => {
         <div className="w-40 h-40 rounded-full border-4 border-indigo-500 shadow-xl flex items-center justify-center bg-white">
           <img src={rook} alt="Rook Avatar" className="w-36 h-36 rounded-full" />
         </div>
+        <br />
         <button
           onClick={() => sendAction("pass")}
           className="col-span-3 bg-blue-600 text-white p-3 rounded shadow hover:bg-blue-700 transition"
         >
           Pass My Turn
         </button>
-        <div className="grid grid-cols-3 gap-4 mt-4 w-full max-w-xs">
+        <div className="flex justify-evenly flex-wrap items-center mt-4 w-full max-w-xs">
           <button
             onClick={() => sendAction("move", "north")}
             className="col-span-3 bg-blue-600 text-white p-3 rounded shadow hover:bg-blue-700 transition"
