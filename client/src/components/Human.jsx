@@ -41,6 +41,8 @@ const HumanGamePage = () => {
 
     socket.on(ACTIONS.GAME_UPDATE, (state) => {
       setGameState(state);
+      if(gameState.turn==0  )
+        toast.success("Your Turn")
       if(gameState.players.bishop.disabled)
         toast.error("Rook is now disabled")
       if(gameState.players.rook.disabled)
