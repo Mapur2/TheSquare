@@ -71,6 +71,9 @@ const RookGamePage = () => {
       setAutoSenseData(data);
       setShowAutoSenseModal(true);
     });
+    socket.on(ACTIONS.ERROR, (data) => {
+      toast.error(data.message);
+    });
 
     return () => {
       socket.off(ACTIONS.JOINED);
@@ -78,6 +81,8 @@ const RookGamePage = () => {
       socket.off(ACTIONS.GAME_UPDATE);
       socket.off(ACTIONS.GAME_OVER);
       socket.off(ACTIONS.AUTO_SENSE_RESULT);
+      socket.off(ACTIONS.ERROR)
+      socket.off("bishopUpdate")
     };
   }, [roomId, username]);
 

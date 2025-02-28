@@ -158,7 +158,7 @@ export const HowToPlay = () => {
       <section className="w-full max-w-5xl mb-8 bg-gray-800 p-6 rounded-lg shadow-lg">
         <h2 className="text-3xl font-bold mb-4 text-center">Game Rules</h2>
         <ul className="list-disc list-inside text-lg text-gray-300 space-y-2">
-          <li><strong>Start & Exit:</strong> Begin at the starting cell (Room (1,1)) and reach the exit (Room (5,5)).</li>
+          <li><strong>Start & Exit:</strong> Begin at the starting cell (Room (0,0)) and reach the exit (Room (4,4)).</li>
           <li><strong>Roles:</strong> Human, Rook, and Bishop are manually controlled. Each role has unique abilities.</li>
           <li><strong>Encountering Bishop:</strong> If the Human meets Bishop without a screwdriver, it’s game over.</li>
           <li><strong>Rook's Role:</strong> Rook can lock/unlock doors to help Bishop catch the Human.</li>
