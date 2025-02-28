@@ -3,6 +3,14 @@ import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
+import { Link } from "react-router-dom";
+import bishopInterface from "../assets/bishopInterface.png"; // Replace with your actual image paths
+import humanInterface from "../assets/humanInterface.png";
+import rookInterface from "../assets/rookInterface.png";
+import searchResultImg from "../assets/searchResults.png";
+import mapScreenshot from "../assets/mapScreenshot.png";
+import autoSenseImg from "../assets/autoSense.png";
+
 function Home() {
   const [roomId, setRoomId] = useState("");
   const [username, setUsername] = useState("");
@@ -82,56 +90,88 @@ function Home() {
               Create New Room
             </span>
           </p>
-          <button
-            onClick={() => setIsModalOpen(true)}
+          <a href="/rules" target="_blank"
             className="text-indigo-600 hover:underline font-medium"
           >
             Rules
-          </button>
+          </a>
         </div>
       </div>
-
-      {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* Modal overlay */}
-          <div
-            className="fixed inset-0 bg-black opacity-50"
-            onClick={() => setIsModalOpen(false)}
-          ></div>
-          {/* Modal content */}
-          <div className="bg-white rounded-lg shadow-lg max-w-lg mx-auto z-10 p-6">
-            <div className="flex justify-between items-center border-b pb-2">
-              <h3 className="text-xl font-semibold">Game Rules</h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-gray-500 hover:text-gray-700 text-2xl leading-none"
-              >
-                &times;
-              </button>
-            </div>
-            <div className="mt-4 text-gray-700">
-              <ul className="list-disc list-inside space-y-2">
-                <li>Three roles: Human, Bishop, and Rook.</li>
-                <li>The Human must reach the exit without being caught by Bishop.</li>
-                <li>If the Human meets Bishop without a screwdriver, it’s game over.</li>
-                <li>Rook can lock/unlock doors to help Bishop chase the Human.</li>
-                <li>Collect keys and screwdrivers to interact with doors and disable robots.</li>
-              </ul>
-            </div>
-            <div className="mt-4 flex justify-end">
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
+
   );
 }
+
+export const HowToPlay = () => {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white flex flex-col items-center p-6">
+      {/* Heading */}
+      <header className="mb-8">
+        <h1 className="text-5xl font-bold text-purple-400 mb-2">TheSquare</h1> <span>
+        Developed by <a href="https://mapur2.github.io/new_portfolio/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Rupam</a></span>
+        <p className="text-xl text-gray-300 text-center max-w-2xl">
+          Welcome to TheSquare! A strategic, turn-based multiplayer game where each player assumes a unique role. Outsmart your opponents by planning your moves, managing doors, and using your special abilities.
+        </p>
+      </header>
+
+      {/* Game Interfaces */}
+      <section className="w-full max-w-5xl mb-8">
+        <h2 className="text-3xl font-bold mb-4 text-center">Game Interfaces</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={humanInterface} alt="Human Interface" className="w-full h-auto rounded" />
+            <p className="mt-2">Human Interface</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={rookInterface} alt="Rook Interface" className="w-full h-auto rounded" />
+            <p className="mt-2">Rook Interface</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={bishopInterface} alt="Bishop Interface" className="w-full h-auto rounded" />
+            <p className="mt-2">Bishop Interface</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Game Features */}
+      <section className="w-full max-w-5xl mb-8">
+        <h2 className="text-3xl font-bold mb-4 text-center">Game Features</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={searchResultImg} alt="Search Result" className="w-full h-auto rounded" />
+            <p className="mt-2">Search Result</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={mapScreenshot} alt="Map" className="w-full h-auto rounded" />
+            <p className="mt-2">Map</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg shadow-lg flex flex-col items-center">
+            <img src={autoSenseImg} alt="Auto Sense" className="w-full h-auto rounded" />
+            <p className="mt-2">Auto Sense</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Game Rules */}
+      <section className="w-full max-w-5xl mb-8 bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 className="text-3xl font-bold mb-4 text-center">Game Rules</h2>
+        <ul className="list-disc list-inside text-lg text-gray-300 space-y-2">
+          <li><strong>Start & Exit:</strong> Begin at the starting cell (Room (1,1)) and reach the exit (Room (5,5)).</li>
+          <li><strong>Roles:</strong> Human, Rook, and Bishop are manually controlled. Each role has unique abilities.</li>
+          <li><strong>Encountering Bishop:</strong> If the Human meets Bishop without a screwdriver, it’s game over.</li>
+          <li><strong>Rook's Role:</strong> Rook can lock/unlock doors to help Bishop catch the Human.</li>
+          <li><strong>Items:</strong> Collect keys and screwdrivers to interact with doors and disable robots.</li>
+          <li><strong>Turn Order:</strong> The game is turn-based: Human → Rook → Bishop.</li>
+        </ul>
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-8 text-center text-gray-400 text-xl">
+        Developed by <a href="https://mapur2.github.io/new_portfolio/" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">Rupam</a>
+      </footer>
+    </div>
+  );
+};
+
 
 export default Home;

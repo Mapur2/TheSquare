@@ -102,7 +102,7 @@ const HumanGamePage = () => {
       <div className="relative flex items-center justify-center my-6">
         {/* Central Avatar */}
         <div className="w-40 h-40 rounded-full border-4 border-indigo-500 shadow-2xl flex items-center justify-center bg-white">
-          <img src={human} alt="Human Avatar" className="w-24 h-24" />
+          <img src={human} alt="Human Avatar" className="w-36 h-36 rounded-full" />
         </div>
         {/* Arrow Buttons */}
         <button

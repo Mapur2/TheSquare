@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
-import Home from './components/Home.jsx'
+import Home, { HowToPlay } from './components/Home.jsx'
 import GamePage from './components/GamePage.jsx'
 import HumanGamePage from './components/Human.jsx'
 import RookGamePage from './components/Rook.jsx'
@@ -16,6 +16,7 @@ const router=createBrowserRouter(
         <Route path="/game/human/:roomId" element={<HumanGamePage />} />
         <Route path="/game/rook/:roomId" element={<RookGamePage />} />
         <Route path="/game/bishop/:roomId" element={<BishopGamePage />} />
+        <Route path='/rules' element={<HowToPlay/>}/>
     </Route>
     )
 )
