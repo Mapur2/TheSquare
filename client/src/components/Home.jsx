@@ -49,6 +49,8 @@ function Home() {
     <div className="min-h-screen bg-gradient-to-br flex items-center justify-center p-4">
       <div className="max-w-md w-full space-y-8 p-8 bg-white shadow-lg rounded-xl relative">
         <div className="text-center">
+          
+        <h1 className="text-5xl font-bold text-purple-400 mb-2">TheSquare</h1>
           <h2 className="text-3xl font-extrabold text-gray-900">
             Join a Game Room
           </h2>
