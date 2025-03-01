@@ -289,17 +289,17 @@ function processPlayerAction(data, socket, roomId) {
     advanceTurn(gameState);
     if (gameState.currentTurn == "rook" && gameState.players.rook.disabled)
         advanceTurn(gameState);
-    if (gameState.players.bishop.disabled) {
+    if (gameState.currentTurn == "bishop" && gameState.players.bishop.disabled) {
         advanceTurn(gameState);
     }
-    if (gameState.currentTurn == "bishop" && gameState.players.bishop.disabled && gameState.players.bishop.disabled) {
-        delete rooms[roomId]
+    /* if (gameState.currentTurn == "bishop" && gameState.players.bishop.disabled && gameState.players.bishop.disabled) {
         io.to(roomId).emit(ACTIONS.GAME_OVER, {
             message: "Both rook and bishop is disabled. Human has won the game!",
             gameState
         })
+        delete rooms[roomId]
         return;
-    }
+    } */
 
     // Broadcast updated game state to all clients in the room.
     io.to(roomId).emit(ACTIONS.GAME_UPDATE, gameState);
